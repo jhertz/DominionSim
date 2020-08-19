@@ -81,6 +81,7 @@ public class DomEngine {
 	private DomGame currentGame;
     private String myStatus;
 	private int totalVPTokens=0;
+    private final boolean headless;
 
 	/**
 	 * @param aString
@@ -101,11 +102,18 @@ public class DomEngine {
 	}
 
 	public DomEngine () {
+		this(false);
+	}
+
+	public DomEngine(boolean headless) {
+		this.headless = headless;
 		loadSystemBots();
 		createSimpleCardStrategiesBots();
 		loadCurrentUserBots();
-		myGui = new DomGui( this );
-		myGui.setVisible(true);
+		if(!headless) {
+			myGui = new DomGui(this);
+			myGui.setVisible(true);
+		}
     }
     
     private void createSimpleCardStrategiesBots() {
@@ -201,10 +209,12 @@ public class DomEngine {
 	}
 
 	private void showCharts() {
-      myGui.setBarChart(new DomBarChart(players));
-      myGui.setVPLineChart(new DomLineChart(players, "VP"));
-      myGui.setMoneyLineChart(new DomLineChart(players, "Money"));
-      myGui.validate();
+		if(!headless) {
+			myGui.setBarChart(new DomBarChart(players));
+			myGui.setVPLineChart(new DomLineChart(players, "VP"));
+			myGui.setMoneyLineChart(new DomLineChart(players, "Money"));
+			myGui.validate();
+		}
 	}
 
     private void printResults() {
@@ -223,6 +233,7 @@ public class DomEngine {
 
         if (NUMBER_OF_GAMES > 1) {
             for (DomPlayer thePlayer : players) {
+            	if(!headless) {
 //                myGui.showWinPercentage(thePlayer, thePlayer.getWins()*100/(theTotalWins +theTotalTies/2));
                 myGui.showWinPercentage(thePlayer, (int) (thePlayer.getWins() * 100 / NUMBER_OF_GAMES));
 //                myGui.showTiePercentage(thePlayer.getTies()*100/(theTotalWins +theTotalTies/2));
@@ -237,7 +248,9 @@ public class DomEngine {
 				LOGGER.info(thePlayer+ " average turn 3 $" + thePlayer.getMoneyCurve(2)/ NUMBER_OF_GAMES);
 				LOGGER.info(thePlayer+" average turn 4 $" + thePlayer.getMoneyCurve(3)/ NUMBER_OF_GAMES);
             }
-            myGui.showTiePercentage((int) (theTotalTies*100/NUMBER_OF_GAMES));
+            if(!headless) {
+				myGui.showTiePercentage((int) (theTotalTies * 100 / NUMBER_OF_GAMES));
+			}
             LOGGER.info("Empty Piles Endings : " + emptyPilesEndingCount / NUMBER_OF_GAMES * 100 + "%");
             LOGGER.info("average VP tokens: " + totalVPTokens/NUMBER_OF_GAMES);
         }
