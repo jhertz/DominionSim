@@ -217,7 +217,7 @@ public class DomEngine {
 		}
 	}
 
-    private void printResults() {
+    private SimulationResult printResults() {
         int theTotalTies = 0;
         for (DomPlayer thePlayer : players) {
             theTotalTies += thePlayer.getTies();
@@ -230,7 +230,7 @@ public class DomEngine {
         LOGGER.info("Average turns = " + theAverageTurns);
 
         showRunTimes();
-
+        List<Double> scores = new ArrayList<>();
         if (NUMBER_OF_GAMES > 1) {
             for (DomPlayer thePlayer : players) {
             	if(!headless) {
@@ -241,8 +241,8 @@ public class DomEngine {
 					myGui.show3EmptyPilesEndings(emptyPilesEndingCount / NUMBER_OF_GAMES * 100);
 					myGui.showTime(myTotalTime);
 				}
-
-                LOGGER.info(thePlayer + " has " + thePlayer.getWins() * 100 / NUMBER_OF_GAMES + "% wins ("
+            	scores.add(thePlayer.getWins() / NUMBER_OF_GAMES);
+            	LOGGER.info(thePlayer + " has " + thePlayer.getWins() * 100 / NUMBER_OF_GAMES + "% wins ("
                         + thePlayer.getWins() + ")"
                         + " and " + thePlayer.getTies() * 100 / NUMBER_OF_GAMES + "% ties ("
                         + thePlayer.getTies() + ")");
@@ -255,6 +255,7 @@ public class DomEngine {
             LOGGER.info("Empty Piles Endings : " + emptyPilesEndingCount / NUMBER_OF_GAMES * 100 + "%");
             LOGGER.info("average VP tokens: " + totalVPTokens/NUMBER_OF_GAMES);
         }
+		return new SimulationResult(scores);
     }
 
     private void showRunTimes() {
@@ -314,7 +315,7 @@ public class DomEngine {
      * @param aNumber 
      * @param aShowLog 
      */
-    public void startSimulation( ArrayList<DomPlayer> thePlayers, boolean keepOrder, int aNumber, boolean aShowLog ) {
+    public SimulationResult startSimulation( List<DomPlayer> thePlayers, boolean keepOrder, int aNumber, boolean aShowLog ) {
         emptyPilesEndingCount=0;
         NUMBER_OF_GAMES = aNumber;
      	myLog = new StringBuilder();
@@ -361,12 +362,12 @@ public class DomEngine {
         players.addAll( thePlayers );
         
         myTotalTime = ((System.currentTimeMillis()-theStartTime)/100)/10.0;
-        LOGGER.info("Board after all games: "+ theBoard);
         LOGGER.info( "Totale runSimulation tijd : " + myTotalTime );
 
-        printResults();
+        SimulationResult result = printResults();
         if (!haveToLog) 
           showCharts();
+        return result;
     }
 
 	private void writeEndOfGameLog(DomGame theGame) {
