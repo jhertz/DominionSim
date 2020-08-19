@@ -26,4 +26,4 @@ $ mvn exec:java
 
 To run two bots with the UI:
 
-mvn exec:java -Dmy.mainClass="seanahan.BasicCMDSimulation" -D^Cec.args="10000 Magpie \"Big Money Ultimate\""
+mvn exec:java -Dmy.mainClass="seanahan.BasicCMDSimulation" -Dexec.args="10000 Magpie \"Big Money Ultimate\""
