@@ -27,8 +27,8 @@ $ mvn exec:java
 To run two bots with the UI:
 
 ```
-$ mvn clean package -DskipTest=true #alliance not currently building
+$ mvn clean package -DskipTests=true #alliance not currently building
 ```
 ```
-$ mvn exec:java -Dmy.mainClass="be.aga.dominionSimulator.BasicCMDSimulation" -Dexec.args="10000 Magpie \\\\"Big Money Ultimate\\\\""
+$ mvn exec:java -Dmy.mainClass="be.aga.dominionSimulator.BasicCMDSimulation" -Dexec.args="10000 Magpie \"Big Money Ultimate\""
 ```
