@@ -21,3 +21,9 @@ To run the simulator:
 ```
 $ mvn exec:java
 ```
+
+## Command Line
+
+To run two bots with the UI:
+
+mvn exec:java -Dmy.mainClass="seanahan.BasicCMDSimulation" -D^Cec.args="10000 Magpie \"Big Money Ultimate\""
