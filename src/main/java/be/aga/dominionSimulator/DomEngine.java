@@ -235,11 +235,12 @@ public class DomEngine {
             for (DomPlayer thePlayer : players) {
             	if(!headless) {
 //                myGui.showWinPercentage(thePlayer, thePlayer.getWins()*100/(theTotalWins +theTotalTies/2));
-                myGui.showWinPercentage(thePlayer, (int) (thePlayer.getWins() * 100 / NUMBER_OF_GAMES));
+					myGui.showWinPercentage(thePlayer, (int) (thePlayer.getWins() * 100 / NUMBER_OF_GAMES));
 //                myGui.showTiePercentage(thePlayer.getTies()*100/(theTotalWins +theTotalTies/2));
-                myGui.showAverageTurns(theAverageTurns);
-                myGui.show3EmptyPilesEndings(emptyPilesEndingCount / NUMBER_OF_GAMES * 100);
-                myGui.showTime(myTotalTime);
+					myGui.showAverageTurns(theAverageTurns);
+					myGui.show3EmptyPilesEndings(emptyPilesEndingCount / NUMBER_OF_GAMES * 100);
+					myGui.showTime(myTotalTime);
+				}
 
                 LOGGER.info(thePlayer + " has " + thePlayer.getWins() * 100 / NUMBER_OF_GAMES + "% wins ("
                         + thePlayer.getWins() + ")"
