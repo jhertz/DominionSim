@@ -30,9 +30,12 @@ public class BasicCMDSimulation {
         thePlayers.add(get(args[2], domEngine));
         SimulationResult simulationResult = domEngine.startSimulation(thePlayers, false, numGames, false);
         int i = 0;
+        double ties = 1.0;
         for (Double score : simulationResult.getScores()) {
-            System.err.println("player: " + ++i + ": " + score);
+            ties -= score;
+            System.err.println("player: " + ++i + ": " + score*100 + "%");
         }
+        System.err.println("ties: " + ties*100 + "%");
     }
 
     private static DomPlayer get(String arg, DomEngine myEngine) {
