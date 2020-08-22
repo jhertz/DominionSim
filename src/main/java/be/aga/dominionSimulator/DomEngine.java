@@ -448,18 +448,8 @@ public class DomEngine {
 	}
 
 	private String getXMLForAllUserBots() {
-        String newline = System.getProperty( "line.separator" );
-		StringBuilder theXML = new StringBuilder();
-		theXML.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>").append(newline);
-		theXML.append("<playerCollection>").append(newline);
-		for (DomPlayer thePlayer : bots) {
-	      if (thePlayer.isUserCreated()){
-	    	theXML.append(thePlayer.getXML()).append(newline);
-	      }
-		}
-		theXML.append("</playerCollection>");
-		return theXML.toString();
-	}
+    	return XMLOutputter.getXML(bots, bot -> bot.isUserCreated());
+    }
 
 	public void loadUserBots() {
 		JFileChooser fileChooser = new JFileChooser(myLastFile);
