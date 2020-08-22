@@ -466,6 +466,46 @@ public class DomBuyCondition {
         return new DomBuyConditionPanel(this, domBuyRulePanel);
     }
 
+    public static class FunctionTypeWithValue {
+        public final DomBotFunction function;
+        public final Object value;
+        public final Class clazz;
+
+        public FunctionTypeWithValue(DomBotFunction function, Object value, Class clazz) {
+            this.function = function;
+            this.value = value;
+            this.clazz = clazz;
+        }
+    }
+
+    public static FunctionTypeWithValue getFunctionTypeWithValue(DomBotFunction function, double value, DomCardType cardType, DomCardName cardName) {
+        if (function==DomBotFunction.constant) {
+            return new FunctionTypeWithValue(function, value, Double.class);
+        } else if (function==DomBotFunction.countCardTypeInDeck) {
+            return new FunctionTypeWithValue(function, cardType.name(), String.class);
+        } else if (function==DomBotFunction.countCardsInDeck
+                || function==DomBotFunction.countCardsInDeckNoMats
+                || function==DomBotFunction.countCardsInSupply
+                || function==DomBotFunction.countCardsInOpponentsDecks
+                || function==DomBotFunction.countCardsInHand
+                || function==DomBotFunction.countCardsInPlay
+                || function==DomBotFunction.countOnTavernMat
+                || function==DomBotFunction.isPlusOneActionTokenSet
+                || function==DomBotFunction.isPlusOneCardTokenSet
+                || function==DomBotFunction.isPlusOneBuyTokenSet
+                || function==DomBotFunction.isMinus$2TokenSet
+                || function==DomBotFunction.isEstateTokenPlaced
+                || function==DomBotFunction.isTrashingTokenPlaced
+                || function==DomBotFunction.isPlusOneCoinTokenSet
+                || function==DomBotFunction.countVPon
+                || function==DomBotFunction.hasBuiltProject
+        ) {
+            return new FunctionTypeWithValue(function, cardName.name(), String.class);
+        } else {
+          return new FunctionTypeWithValue(function, "", null);
+        }
+    }
+
 	public String getXML(String theRuleIndentation) {
         StringBuilder theXML = new StringBuilder();
         String newline = System.getProperty( "line.separator" );
@@ -474,60 +514,19 @@ public class DomBuyCondition {
         theXML.append("<condition>").append(newline);
         theXML.append(theRuleIndentation).append(theIndentation).append(theIndentation);
         theXML.append("<left type=\"").append(leftFunction.name()).append("\"");
-        if (leftFunction==DomBotFunction.constant) {
-          theXML.append(" attribute=\"").append(leftValue).append("\"");
-        } 
-        if (leftFunction==DomBotFunction.countCardTypeInDeck) {
-          theXML.append(" attribute=\"").append(leftCardType.name()).append("\"");
+        FunctionTypeWithValue lfunctionTypeWithValue = getFunctionTypeWithValue(leftFunction, leftValue, leftCardType, leftCardName);
+        if(lfunctionTypeWithValue.value.toString().length() > 0) {
+            theXML.append(" attribute=\"").append(lfunctionTypeWithValue.value).append("\"");
         }
-        if (leftFunction==DomBotFunction.countCardsInDeck
-                || leftFunction==DomBotFunction.countCardsInDeckNoMats
-                || leftFunction==DomBotFunction.countCardsInSupply
-                || leftFunction==DomBotFunction.countCardsInOpponentsDecks
-                || leftFunction==DomBotFunction.countCardsInHand
-            || leftFunction==DomBotFunction.countCardsInPlay
-                || leftFunction==DomBotFunction.countOnTavernMat
-                || leftFunction==DomBotFunction.isPlusOneActionTokenSet
-                || leftFunction==DomBotFunction.isPlusOneCardTokenSet
-                || leftFunction==DomBotFunction.isPlusOneBuyTokenSet
-                || leftFunction==DomBotFunction.isMinus$2TokenSet
-                || leftFunction==DomBotFunction.isEstateTokenPlaced
-                || leftFunction==DomBotFunction.isTrashingTokenPlaced
-                || leftFunction==DomBotFunction.isPlusOneCoinTokenSet
-                || leftFunction==DomBotFunction.countVPon
-                || leftFunction==DomBotFunction.hasBuiltProject
-                ) {
-          theXML.append(" attribute=\"").append(leftCardName.name()).append("\"");
-        }
+
         theXML.append("/>").append(newline);
         theXML.append(theRuleIndentation).append(theIndentation).append(theIndentation);
         theXML.append("<operator type=\"").append(comparator.name()).append("\" />").append(newline);
         theXML.append(theRuleIndentation).append(theIndentation).append(theIndentation);
         theXML.append("<right type=\"").append(rightFunction.name()).append("\"");
-        if (rightFunction==DomBotFunction.constant) {
-          theXML.append(" attribute=\"").append(rightValue).append("\"");
-        } 
-        if (rightFunction==DomBotFunction.countCardTypeInDeck) {
-          theXML.append(" attribute=\"").append(rightCardType.name()).append("\"");
-        }
-        if (rightFunction==DomBotFunction.countCardsInDeck
-         || rightFunction==DomBotFunction.countCardsInDeckNoMats
-         || rightFunction==DomBotFunction.countCardsInSupply
-         || rightFunction==DomBotFunction.countCardsInOpponentsDecks
-         || rightFunction==DomBotFunction.countCardsInHand
-         || rightFunction==DomBotFunction.countCardsInPlay
-         || rightFunction==DomBotFunction.countOnTavernMat
-         || rightFunction==DomBotFunction.isPlusOneActionTokenSet
-         || rightFunction==DomBotFunction.isPlusOneCardTokenSet
-                || rightFunction==DomBotFunction.isPlusOneBuyTokenSet
-                || rightFunction==DomBotFunction.isMinus$2TokenSet
-                || rightFunction==DomBotFunction.isEstateTokenPlaced
-                || rightFunction==DomBotFunction.isTrashingTokenPlaced
-                || rightFunction==DomBotFunction.isPlusOneCoinTokenSet
-                || rightFunction==DomBotFunction.countVPon
-                || rightFunction==DomBotFunction.hasBuiltProject
-                ) {
-          theXML.append(" attribute=\"").append(rightCardName.name()).append("\"");
+        FunctionTypeWithValue rfunctionTypeWithValue = getFunctionTypeWithValue(rightFunction, rightValue, rightCardType, rightCardName);
+        if(lfunctionTypeWithValue.value.toString().length() > 0) {
+            theXML.append(" attribute=\"").append(rfunctionTypeWithValue.value).append("\"");
         }
         theXML.append("/>").append(newline);
         if (extraAttribute!=0) {
