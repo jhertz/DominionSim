@@ -1,8 +1,6 @@
 package be.aga.dominionSimulator.exec;
 
-import be.aga.dominionSimulator.DomEngine;
-import be.aga.dominionSimulator.DomPlayer;
-import be.aga.dominionSimulator.SimulationResult;
+import be.aga.dominionSimulator.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.Priority;
 
@@ -56,7 +54,7 @@ public class BasicCMDSimulation {
     }
 
     private static void printDeck(DomPlayer dp) {
-        System.out.println(dp.name);
+        System.out.println(dp.getName());
         int i = 0;
         for (DomBuyRule buyRule : dp.getBuyRules()) {
             System.out.println( "\t" + (i++) + " " + buyRule.getCardToBuy().name());

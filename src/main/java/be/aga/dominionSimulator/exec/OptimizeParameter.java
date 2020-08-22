@@ -1,4 +1,4 @@
-package be.aga.dominionSimulator.experiments;
+package be.aga.dominionSimulator.exec;
 
 import be.aga.dominionSimulator.*;
 
@@ -9,8 +9,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static be.aga.dominionSimulator.BasicCMDSimulation.get;
-import static be.aga.dominionSimulator.BasicCMDSimulation.printResults;
+import static be.aga.dominionSimulator.exec.BasicCMDSimulation.get;
+import static be.aga.dominionSimulator.exec.BasicCMDSimulation.printResults;
 
 /**
  * Optimize a value for the first deck for a parameter args[1], iterating over all values from args[2] to args[3], writing to directory args[4]
