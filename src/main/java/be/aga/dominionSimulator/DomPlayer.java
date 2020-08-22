@@ -2153,6 +2153,12 @@ public class DomPlayer extends Observable implements Comparable<DomPlayer> {
         return ties;
     }
 
+
+    public void resetPlayer() {
+        this.wins = 0;
+        this.ties = 0;
+    }
+
     /**
      * @param discardsLeft
      * @param discardToTopOfDeck
@@ -4333,6 +4339,10 @@ public class DomPlayer extends Observable implements Comparable<DomPlayer> {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String newName) {
+        this.name = newName;
     }
 
     public DomCardName getCardForObelisk() {
