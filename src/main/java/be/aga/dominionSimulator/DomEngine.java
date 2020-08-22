@@ -115,6 +115,10 @@ public class DomEngine {
 			myGui.setVisible(true);
 		}
     }
+
+    public void setLevel(Level level) {
+		LOGGER.setLevel(level);
+	}
     
     private void createSimpleCardStrategiesBots() {
         for (DomCardName theCard : DomCardName.getSafeValues()) {
@@ -163,9 +167,11 @@ public class DomEngine {
 				input.close();
 			} catch (IOException e1) {
 				LOGGER.error("failed to load current user bots", e1);
-				JOptionPane.showMessageDialog(myGui,
-						"Error Reading File", "error",
-						JOptionPane.ERROR_MESSAGE);
+				if(!headless) {
+					JOptionPane.showMessageDialog(myGui,
+							"Error Reading File", "error",
+							JOptionPane.ERROR_MESSAGE);
+				}
 			}
 			return false;
 		}
