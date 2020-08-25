@@ -1,0 +1,206 @@
+<player name="pproteus"
+ author="pproteus"
+ description="Beggar (+ Groom) + Money">
+ <type name="Province"/>
+ <type name="Combo"/>
+ <type name="UserCreated"/>
+ <type name="TwoPlayer"/>
+ <type name="ShuffleOverhand"/>
+   <buy name="Guildhall">
+      <condition>
+         <left type="hasBuiltProject" attribute="Guildhall"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Feodum">
+      <condition>
+         <left type="isActionPhase"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Silver">
+      <condition>
+         <left type="isActionPhase"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Silver"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+   </buy>
+   <buy name="Mill">
+      <condition>
+         <left type="isActionPhase"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Copper">
+      <condition>
+         <left type="isActionPhase"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Groom">
+      <condition>
+         <left type="hasBuiltProject" attribute="Guildhall"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Delve">
+      <condition>
+         <left type="countCardsInSupply" attribute="Silver"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countAvailableMoney"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="6.0"/>
+      </condition>
+      <condition>
+         <left type="countEmptyPiles"/>
+         <operator type="smallerThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+   </buy>
+   <buy name="Delve">
+      <condition>
+         <left type="countCardsInSupply" attribute="Silver"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countAvailableMoney"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="6.0"/>
+      </condition>
+   </buy>
+   <buy name="Delve">
+      <condition>
+         <left type="countCardsInSupply" attribute="Silver"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countAvailableMoney"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="4.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Beggar"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Beggar">
+      <condition>
+         <left type="countCardsInDeck" attribute="Beggar"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Feodum">
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Silver"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="4.0"/>
+      </condition>
+   </buy>
+   <buy name="Feodum">
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInOpponentsDecks" attribute="Feodum"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Feodum">
+      <condition>
+         <left type="countCardsInSupply" attribute="Feodum"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Delve">
+      <condition>
+         <left type="countCardsInSupply" attribute="Silver"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countAvailableMoney"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="10.0"/>
+      </condition>
+   </buy>
+   <buy name="Province">
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Province">
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="minus" attribute="6.0" />
+      </condition>
+   </buy>
+   <buy name="Delve">
+      <condition>
+         <left type="countCardsInSupply" attribute="Silver"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Duchy">
+      <condition>
+         <left type="countCardsInSupply" attribute="Duchy"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="minus" attribute="3.0" />
+      </condition>
+   </buy>
+   <buy name="Duchy">
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Duchy"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Copper">
+      <condition>
+         <left type="hasBuiltProject" attribute="Guildhall"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+</player>
