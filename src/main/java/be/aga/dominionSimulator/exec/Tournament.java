@@ -96,11 +96,16 @@ public class Tournament {
         int max = sortedResults.stream().mapToInt(e -> e.getKey().getName().length()).max().getAsInt();
         StringBuilder sb = new StringBuilder(pad("", max) + "\t");
         for (Map.Entry<DomPlayer, Double> entry : sortedResults) {
-           sb.append(entry.getKey().getName()).append("\t");
+            String name = entry.getKey().getName();
+            if(name.length() > 7) {
+                name = name.substring(0, 7);
+            }
+            sb.append(name).append("\t");
         }
         sb.append("Total\n");
         for(int i = 0; i < sortedResults.size(); i++) {
             DomPlayer playerA = sortedResults.get(i).getKey();
+            sb.append(i+1).append(": ");
             sb.append(pad(playerA.getName(), max)).append("\t");
             for(int j = 0; j < sortedResults.size(); j++) {
                 DomPlayer playerB = sortedResults.get(j).getKey();
@@ -135,7 +140,7 @@ public class Tournament {
         List<Map.Entry<DomPlayer, Double>> entries = new ArrayList<>(results.entrySet());
         Comparator<Map.Entry<DomPlayer, Double>> comparator = (e1,e2) -> Double.compare(e2.getValue(), e1.getValue());
         Collections.sort(entries, comparator);
-        for(int i = entries.size(); i < entries.size(); i++) {
+        for(int i = 0; i < entries.size(); i++) {
             System.err.println("place: " + (i+1) + " " + entries.get(i).getKey().getName() + " with " + entries.get(i).getValue() + " points");
         }
         return entries;
