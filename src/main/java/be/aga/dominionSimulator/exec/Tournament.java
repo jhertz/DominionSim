@@ -19,21 +19,42 @@ import org.xml.sax.InputSource;
 public class Tournament {
 
     public static class TournamentResult {
-        final double[][] results;
+        private final Map<DomPlayer, Map<DomPlayer, Double>> results = new HashMap<>();
         public final List<DomPlayer> players;
 
         public TournamentResult(List<DomPlayer> players) {
             this.players = players;
             int n = players.size();
-            results = new double[n][];
-            for(int i = 0; i < n; i++) {
-                results[i] = new double[n];
+            for (DomPlayer player : players) {
+                results.put(player, new HashMap<>());
             }
         }
 
-        public void result(int playerA, int playerB, int aWins, int bWins, double ties) {
-            results[playerA][playerB] = aWins + ties;
-            results[playerB][playerA] = bWins + ties;
+        public void result(DomPlayer playerA, DomPlayer playerB, int aWins, int bWins, double ties) {
+            if(!results.get(playerA).containsKey(playerB)) {
+              results.get(playerA).put(playerB, 0.0);
+            }
+            results.get(playerA).put(playerB,results.get(playerA).get(playerB) + aWins + ties);
+            if(!results.get(playerB).containsKey(playerA)) {
+                results.get(playerB).put(playerA, 0.0);
+            }
+            results.get(playerB).put(playerA,results.get(playerB).get(playerA) + bWins + ties);
+        }
+
+        public double getResult(DomPlayer playerA, DomPlayer playerB) {
+            if(playerA == playerB) {
+                // 0 for the diagonal
+                return 0;
+            }
+            if(!results.containsKey(playerA)) {
+                System.err.println("no results for player " + playerA.getName());
+                return 0;
+            }
+            if(!results.get(playerA).containsKey(playerB)) {
+                System.err.println("no results for player " + playerB.getName() + " against " + playerA.getName());
+                return 0;
+            }
+            return results.get(playerA).get(playerB);
         }
     }
 
@@ -62,47 +83,61 @@ public class Tournament {
                 thePlayers.add(player1);
                 thePlayers.add(player2);
                 SimulationResult simulationResult = domEngine.startSimulation(thePlayers, false, numGames, false);
-                results.result(i, j, player1.getWins(), player2.getWins(), player1.getTies());
+                results.result(player1, player2, player1.getWins(), player2.getWins(), player1.getTies());
                 player1.resetPlayer();
                 player2.resetPlayer();
             }
         }
-        print(results);
-        rank(results);
+        List<Map.Entry<DomPlayer, Double>> sortedResults = rank(results);
+        print(sortedResults, results);
     }
 
-    public static void print(TournamentResult tr) {
-        StringBuilder sb = new StringBuilder("\t");
-        for(int i = 0; i < tr.players.size(); i++) {
-          sb.append(tr.players.get(i).getName()).append("\t");
+    public static void print(List<Map.Entry<DomPlayer, Double>> sortedResults, TournamentResult tr) {
+        int max = sortedResults.stream().mapToInt(e -> e.getKey().getName().length()).max().getAsInt();
+        StringBuilder sb = new StringBuilder(pad("", max) + "\t");
+        for (Map.Entry<DomPlayer, Double> entry : sortedResults) {
+           sb.append(entry.getKey().getName()).append("\t");
         }
-        sb.append("\n");
-        for(int i = 0; i < tr.players.size(); i++) {
-            sb.append(tr.players.get(i).getName()).append("\t");
-            for(int j = 0; j < tr.players.size(); j++) {
-                sb.append(tr.results[i][j]).append("\t");
+        sb.append("Total\n");
+        for(int i = 0; i < sortedResults.size(); i++) {
+            DomPlayer playerA = sortedResults.get(i).getKey();
+            sb.append(pad(playerA.getName(), max)).append("\t");
+            for(int j = 0; j < sortedResults.size(); j++) {
+                DomPlayer playerB = sortedResults.get(j).getKey();
+                sb.append(tr.getResult(playerA, playerB)).append("\t");
             }
+            sb.append(sortedResults.get(i).getValue());
             sb.append("\n");
+        }
+        sb.append(pad("", max));
+        for(int i = 0; i < sortedResults.size(); i++) {
+          sb.append("\t").append(sortedResults.get(i).getValue());
         }
         System.out.println(sb);
     }
 
-    public static void rank(TournamentResult tr) {
-        Map<String, Double> results = new HashMap<>();
+    private static String pad(String name, int max) {
+        while(name.length() < max) {
+            name += " ";
+        }
+        return name;
+    }
+
+    public static List<Map.Entry<DomPlayer, Double>> rank(TournamentResult tr) {
+        Map<DomPlayer, Double> results = new HashMap<>();
         for(int i = 0; i < tr.players.size(); i++) {
             double score = 0.0;
-            for (int j = 0; j < tr.results[i].length; j++) {
-                score += tr.results[i][j];
+            for (int j = 0; j < tr.players.size(); j++) {
+                score += tr.getResult(tr.players.get(i), tr.players.get(j));
             }
-            results.put(tr.players.get(i).getName(), score);
+            results.put(tr.players.get(i), score);
         }
-        List<Map.Entry<String, Double>> entries = new ArrayList<>(results.entrySet());
-        Comparator<Map.Entry<String, Double>> comparator = (e1,e2) -> Double.compare(e1.getValue(), e2.getValue());
+        List<Map.Entry<DomPlayer, Double>> entries = new ArrayList<>(results.entrySet());
+        Comparator<Map.Entry<DomPlayer, Double>> comparator = (e1,e2) -> Double.compare(e2.getValue(), e1.getValue());
         Collections.sort(entries, comparator);
-        for(int i = entries.size() -1; i >= 0; i--) {
-            int place = entries.size() - i;
-            System.err.println("place: " + place + " " + entries.get(i).getKey() + " with " + entries.get(i).getValue() + " points");
+        for(int i = entries.size(); i < entries.size(); i++) {
+            System.err.println("place: " + (i+1) + " " + entries.get(i).getKey().getName() + " with " + entries.get(i).getValue() + " points");
         }
-
+        return entries;
     }
 }
