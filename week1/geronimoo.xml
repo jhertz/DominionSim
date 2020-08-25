@@ -1,0 +1,86 @@
+<player name="Geronimoo"
+ author="Geronimoo"
+ description="">
+ <type name="TwoPlayer"/>
+ <type name="UserCreated"/>
+ <type name="Combo"/>
+ <type name="Province"/>
+ <type name="Competitive"/>
+   <buy name="Guildhall">
+      <condition>
+         <left type="hasBuiltProject" attribute="Guildhall"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Delve">
+      <condition>
+         <left type="countAvailableMoney"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="10.0"/>
+      </condition>
+   </buy>
+   <buy name="Province">
+      <condition>
+         <left type="countCardsInSupply" attribute="Silver"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Delve">
+      <condition>
+         <left type="countAvailableMoney"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="6.0"/>
+      </condition>
+   </buy>
+   <buy name="Feodum">
+      <condition>
+         <left type="countCardsInDeck" attribute="Groom"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInOpponentsDecks" attribute="Groom"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Feodum">
+      <condition>
+         <left type="countCardsInSupply" attribute="Groom"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Duchy">
+      <condition>
+         <left type="countCardsInSupply" attribute="Silver"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Groom"/>
+   <buy name="Feodum"/>
+   <buy name="Delve"/>
+   <buy name="Silver"/>
+   <buy name="Mill">
+      <condition>
+         <left type="countCardsInSupply" attribute="Feodum"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="isActionPhase"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Copper">
+      <condition>
+         <left type="hasBuiltProject" attribute="Guildhall"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+</player>

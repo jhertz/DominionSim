@@ -1,0 +1,62 @@
+<player name="S_Smart"
+ author="S_Smart"
+ description="No description available">
+ <type name="TwoPlayer"/>
+ <type name="UserCreated"/>
+ <type name="Province"/>
+   <buy name="Delve">
+      <condition>
+         <left type="countTurns"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="4.0"/>
+      </condition>
+   </buy>
+   <buy name="Delve">
+      <condition>
+         <left type="hasBuiltProject" attribute="Guildhall"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countAvailableMoney"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="6.0"/>
+      </condition>
+   </buy>
+   <buy name="Guildhall">
+      <condition>
+         <left type="hasBuiltProject" attribute="Guildhall"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Delve">
+      <condition>
+         <left type="countCardsInSupply" attribute="Silver"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Feodum"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countAvailableMoney"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="5.0"/>
+      </condition>
+   </buy>
+   <buy name="Feodum"/>
+   <buy name="Delve">
+      <condition>
+         <left type="countCardsInSupply" attribute="Silver"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Province"/>
+   <buy name="Duchy"/>
+   <buy name="Mill"/>
+   <buy name="Estate"/>
+</player>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playerCollection>
+<player name="RTT"
+ author="RTT"
+ description="Simulation challenge #1">
+ <type name="Province"/>
+ <type name="TwoPlayer"/>
+ <type name="UserCreated"/>
+   <buy name="Delve">
+      <condition>
+         <left type="countAvailableMoney"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="10.0"/>
+      </condition>
+   </buy>
+   <buy name="Province">
+      <condition>
+         <left type="countCardsInSupply" attribute="Feodum"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Guildhall">
+      <condition>
+         <left type="hasBuiltProject" attribute="Guildhall"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Delve">
+      <condition>
+         <left type="countAvailableMoney"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="6.0"/>
+      </condition>
+   </buy>
+   <buy name="Feodum">
+      <condition>
+         <left type="countCardsInDeck" attribute="Silver"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="12.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Feodum"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="7.0"/>
+      </condition>
+   </buy>
+   <buy name="Feodum">
+      <condition>
+         <left type="countCardsInDeck" attribute="Silver"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="15.0"/>
+      </condition>
+   </buy>
+   <buy name="Delve"/>
+   <buy name="Silver"/>
+   <buy name="Copper"/>
+</player>
+
+</playerCollection>
