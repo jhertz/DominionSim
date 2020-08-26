@@ -93,7 +93,7 @@ public class Tournament {
     }
 
     public static void print(List<Map.Entry<DomPlayer, Double>> sortedResults, TournamentResult tr) {
-        int max = sortedResults.stream().mapToInt(e -> e.getKey().getName().length()).max().getAsInt();
+        int max = 1+sortedResults.stream().mapToInt(e -> e.getKey().getName().length()).max().getAsInt();
         StringBuilder sb = new StringBuilder(pad("", max) + "\t");
         for (Map.Entry<DomPlayer, Double> entry : sortedResults) {
             String name = entry.getKey().getName();
