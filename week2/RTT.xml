@@ -1,0 +1,167 @@
+<player name="RTT"
+ author="RTT"
+ description="No description available">
+ <type name="UserCreated"/>
+ <type name="TwoPlayer"/>
+ <type name="Province"/>
+   <buy name="Province">
+      <condition>
+         <left type="countCardsInDeck" attribute="Province"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+   </buy>
+   <buy name="Province">
+      <condition>
+         <left type="getTotalMoneyExcludingMats"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="15.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Border_Village"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="3.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Market"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countTurns"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="10.0"/>
+      </condition>
+   </buy>
+   <buy name="Stockpile">
+      <condition>
+         <left type="countCardsInDeckNoMats" attribute="Stockpile"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countTurns"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="3.0"/>
+      </condition>
+   </buy>
+   <buy name="Market">
+      <condition>
+         <left type="countCardsInDeckNoMats" attribute="Stockpile"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Market"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="getTotalMoneyExcludingMats"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="8.0"/>
+      </condition>
+      <condition>
+         <left type="countTurns"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="5.0"/>
+      </condition>
+   </buy>
+   <buy name="Gold">
+      <condition>
+         <left type="getTotalMoneyExcludingMats"/>
+         <operator type="smallerThan" />
+         <right type="constant" attribute="17.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Border_Village"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="3.0"/>
+      </condition>
+   </buy>
+   <buy name="Border_Village"/>
+   <buy name="Gardens">
+      <condition>
+         <left type="countCardsInSupply" attribute="Gardens"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Gardens">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="4.0"/>
+      </condition>
+   </buy>
+   <buy name="Duchy">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="3.0"/>
+      </condition>
+   </buy>
+   <buy name="Sentry">
+      <condition>
+         <left type="countCardsInDeck" attribute="Sentry"/>
+         <operator type="smallerThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Market">
+      <condition>
+         <left type="countCardsInDeck" attribute="Stables"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Market"/>
+         <operator type="smallerThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Smithy"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Smithy">
+      <condition>
+         <left type="countCardsInDeck" attribute="Border_Village"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="3.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Smithy"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Stables">
+      <condition>
+         <left type="countTurns"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Stables"/>
+         <operator type="smallerThan" />
+         <right type="constant" attribute="4.0"/>
+      </condition>
+   </buy>
+   <buy name="Horse_Traders">
+      <condition>
+         <left type="countCardsInDeck" attribute="Horse_Traders"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Stockpile"/>
+   <buy name="Silver">
+      <condition>
+         <left type="countCardsInSupply" attribute="Stockpile"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="4.0"/>
+      </condition>
+   </buy>
+</player>

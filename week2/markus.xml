@@ -1,0 +1,69 @@
+<player name="markus"
+ author="markus"
+ description="">
+ <type name="Province"/>
+ <type name="TwoPlayer"/>
+ <type name="Combo"/>
+ <type name="Competitive"/>
+ <type name="UserCreated"/>
+   <buy name="Stockpile">
+      <condition>
+         <left type="countCardsInDeckNoMats" attribute="Stockpile"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Gardens">
+      <condition>
+         <left type="countCardsInSupply" attribute="Workshop"/>
+         <operator type="smallerThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+   </buy>
+   <buy name="Gardens">
+      <condition>
+         <left type="countCardsInSupply" attribute="Stockpile"/>
+         <operator type="smallerThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+   </buy>
+   <buy name="Stockpile">
+      <condition>
+         <left type="countCardsInOpponentsDecks" attribute="Sentry"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Gardens">
+      <condition>
+         <left type="countCardsInOpponentsDecks" attribute="Workshop"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+   </buy>
+   <buy name="Workshop">
+      <condition>
+         <left type="countTurns"/>
+         <operator type="smallerThan" />
+         <right type="constant" attribute="10.0"/>
+      </condition>
+   </buy>
+   <buy name="Workshop">
+      <condition>
+         <left type="countCardsInOpponentsDecks" attribute="Sentry"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Silver">
+      <condition>
+         <left type="countCardsInSupply" attribute="Gardens"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="8.0"/>
+      </condition>
+   </buy>
+   <buy name="Estate"/>
+   <buy name="Duchy"/>
+   <buy name="Silver"/>
+   <buy name="Copper"/>
+</player>

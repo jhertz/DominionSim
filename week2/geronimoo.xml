@@ -1,0 +1,27 @@
+<player name="Geronimoo"
+ author="Geronimoo"
+ description="KISS principle at work!">
+ <type name="TwoPlayer"/>
+ <type name="UserCreated"/>
+ <type name="Province"/>
+   <buy name="Workshop">
+      <condition>
+         <left type="countCardsInDeck" attribute="Workshop"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Stockpile"/>
+   <buy name="Province"/>
+   <buy name="Gardens"/>
+   <buy name="Duchy"/>
+   <buy name="Estate">
+      <condition>
+         <left type="countCardsInDeck" attribute="Gardens"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Workshop"/>
+   <buy name="Copper"/>
+</player>
