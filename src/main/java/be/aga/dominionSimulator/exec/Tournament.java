@@ -65,6 +65,14 @@ public class Tournament {
             System.err.println("invalid director " + args[0]);
             return;
         }
+        String separator = " ";
+        if(args.length > 2) {
+            separator = args[2];
+        }
+        Integer maxNameCol = 99;
+        if(args.length > 3) {
+            maxNameCol = Integer.valueOf(args[3]);
+        }
         DomEngine domEngine = new DomEngine(true);
         // lower the log level for mass experimentsg
         domEngine.setLevel(Level.WARN);
@@ -89,36 +97,66 @@ public class Tournament {
             }
         }
         List<Map.Entry<DomPlayer, Double>> sortedResults = rank(results);
-        print(sortedResults, results);
+        print(sortedResults, results, separator, maxNameCol);
     }
 
-    public static void print(List<Map.Entry<DomPlayer, Double>> sortedResults, TournamentResult tr) {
-        int max = 1+sortedResults.stream().mapToInt(e -> e.getKey().getName().length()).max().getAsInt();
-        StringBuilder sb = new StringBuilder(pad("", max) + "\t");
+    public static void print(List<Map.Entry<DomPlayer, Double>> sortedResults, TournamentResult tr, String separator, Integer maxNameCol) {
+        List<List<String>> strings = new ArrayList<>();
+        List<String> players = new ArrayList<>();
+        players.add("");
         for (Map.Entry<DomPlayer, Double> entry : sortedResults) {
-            String name = entry.getKey().getName();
-            if(name.length() > 7) {
-                name = name.substring(0, 7);
-            }
-            sb.append(name).append("\t");
+            players.add(entry.getKey().getName());
         }
-        sb.append("Total\n");
+        players.add("Total");
+        strings.add(players);
         for(int i = 0; i < sortedResults.size(); i++) {
+            List<String> scores = new ArrayList<>();
             DomPlayer playerA = sortedResults.get(i).getKey();
-            sb.append(i+1).append(": ");
-            sb.append(pad(playerA.getName(), max)).append("\t");
+            scores.add( (i+1) + ": " + playerA.getName());
             for(int j = 0; j < sortedResults.size(); j++) {
                 DomPlayer playerB = sortedResults.get(j).getKey();
-                sb.append(tr.getResult(playerA, playerB)).append("\t");
+                scores.add(tr.getResult(playerA, playerB) + "");
             }
-            sb.append(sortedResults.get(i).getValue());
-            sb.append("\n");
+            scores.add(sortedResults.get(i).getValue() + "");
+            strings.add(scores);
         }
-        sb.append(pad("", max));
+        List<String> totals = new ArrayList<>();
+        totals.add("Total");
         for(int i = 0; i < sortedResults.size(); i++) {
-          sb.append("\t").append(sortedResults.get(i).getValue());
+            totals.add(sortedResults.get(i).getValue() + "");
         }
-        System.out.println(sb);
+        strings.add(totals);
+        print(strings, separator, maxNameCol);
+    }
+
+    // Khz wants the things to align nicely in the terminal
+    private static void print(List<List<String>> totals, String separator, Integer maxNameCol) {
+        Map<Integer, Integer> columnToMax = new HashMap<>();
+        for(int i = 0; i < totals.size(); i++) {
+            for(int j = 0; j < totals.get(i).size(); j++) {
+                int length = totals.get(i).get(j).length();
+                if(i == 0) {
+                    if(length > maxNameCol) {
+                        totals.get(i).set(j, totals.get(i).get(j).substring(0, maxNameCol));
+                        length = maxNameCol;
+                    }
+                    columnToMax.put(j, length);
+                } else {
+
+                    if (length > columnToMax.get(j)) {
+                        columnToMax.put(j, length);
+                    }
+                }
+            }
+        }
+        for(int i = 0; i < totals.size(); i++) {
+            for(int j = 0; j < totals.get(i).size(); j++) {
+                String item = totals.get(i).get(j);
+                item = pad(item, columnToMax.get(j));
+                  System.out.print(item + separator);
+            }
+            System.out.println();
+        }
     }
 
     private static String pad(String name, int max) {
