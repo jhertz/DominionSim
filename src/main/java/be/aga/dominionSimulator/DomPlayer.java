@@ -1078,12 +1078,12 @@ public class DomPlayer extends Observable implements Comparable<DomPlayer> {
                 doBuyPhase();
             }
         }
-        //Guildhall and Merchant Guild add Coppers we can't use in the buy phase
-        handleDelayedCoffers();
         if (boughtCards.isEmpty() && hasBuiltProject(DomCardName.Exploration)) {
             addCoffers(1);
             addVillagers(1);
         }
+        //Guildhall and Merchant Guild add Coppers we can't use in the buy phase
+        handleDelayedCoffers();
         handleWineMerchants();
         handlePageant();
         buyTime += System.currentTimeMillis() - theTime;
@@ -2214,7 +2214,7 @@ public class DomPlayer extends Observable implements Comparable<DomPlayer> {
             Collections.sort(getCardsInHand(), DomCard.SORT_FOR_DISCARDING);
         if (!getCardsFromHand(DomCardName.Menagerie).isEmpty())
             discardsLeft = discardForMenagerie(discardsLeft, discardToTopOfDeck);
-        if (getActionsLeft() > 0)
+        if (getActionsAndVillagersLeft() > 0)
             checkForPossibleTrashingBeforeDiscarding(discardsLeft);
         //then discard the rest
         if (discardToTopOfDeck) {
@@ -3069,8 +3069,8 @@ public class DomPlayer extends Observable implements Comparable<DomPlayer> {
         return removeCardFromHand(theCardToTrash);
     }
 
-    public int getActionsLeft() {
-        return actionsLeft;
+    public int getActionsAndVillagersLeft() {
+        return actionsLeft+villagers;
     }
 
     /**
@@ -3670,7 +3670,7 @@ public class DomPlayer extends Observable implements Comparable<DomPlayer> {
     }
 
     public int getProbableActionsLeft() {
-        int probableActionsLeft = getActionsLeft();
+        int probableActionsLeft = getActionsAndVillagersLeft();
         for (DomCard theCard : getCardsInHand()) {
             if (theCard.hasCardType(DomCardType.Terminal))
                 probableActionsLeft--;
@@ -5074,7 +5074,7 @@ public class DomPlayer extends Observable implements Comparable<DomPlayer> {
         liveryTriggers++;
     }
 
-    public void moveToExileMat(DomCard domCard) {
+    public void exile(DomCard domCard) {
         if (DomEngine.haveToLog) DomEngine.addToLog(this + " adds " + domCard + " to the Exile Mat");
         deck.moveToExileMat(domCard);
     }
@@ -5162,5 +5162,9 @@ public class DomPlayer extends Observable implements Comparable<DomPlayer> {
 
     public void addCargoCard(DomCard aCard) {
         cargoCards.add(aCard);
+    }
+
+    public int getActionsLeftNoVillagers() {
+        return actionsLeft;
     }
 }

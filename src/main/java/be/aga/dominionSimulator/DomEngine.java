@@ -16,6 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
+import be.aga.dominionSimulator.stats.StatsManager;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -335,6 +336,7 @@ public class DomEngine {
         findWinnerTime=0;
         boardResetTime=0;
         totalVPTokens=0;
+		StatsManager.resetCurrentSeries();
         for (int i=0;i<NUMBER_OF_GAMES;i++) {
             if (!keepOrder) {
               Collections.shuffle(players);

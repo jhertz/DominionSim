@@ -321,6 +321,8 @@ public class DomBoard extends EnumMap< DomCardName, ArrayList<DomCard> > {
                     addSeparatePile(DomCardName.Spoils, 15);
 
                 if (theCard == DomCardName.Livery
+                        || theCard == DomCardName.Bargain
+                        || theCard == DomCardName.Hostelry
                         || theCard == DomCardName.Paddock
                         || theCard == DomCardName.Supplies
                         || theCard == DomCardName.Groom
@@ -1223,5 +1225,9 @@ public class DomBoard extends EnumMap< DomCardName, ArrayList<DomCard> > {
 
     public ArrayList<DomCard> getDruidBoons() {
         return druidBoons;
+    }
+
+    public ArrayList<DomPlayer> getPlayers() {
+        return players;
     }
 }
