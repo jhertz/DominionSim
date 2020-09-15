@@ -1,0 +1,386 @@
+<player name="pproteus"
+ author="pproteus"
+ description="Livery/Silk/Minstrel/FV engine. Buys 1 Sculptor, uses that to gain potions for Vineyard.">
+ <type name="TwoPlayer"/>
+ <type name="UserCreated"/>
+ <type name="Province"/>
+   <buy name="Province">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Fairgrounds">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Duchy">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Estate">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Paddock">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Paddock"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+      </condition>
+   </buy>
+   <buy name="Gear">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Gear"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+      </condition>
+   </buy>
+   <buy name="Duke">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Duke"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+      </condition>
+   </buy>
+   <buy name="Estate">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Estate"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="minus" attribute="1.0" />
+      </condition>
+   </buy>
+   <buy name="Fairgrounds">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Fairgrounds"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="minus" attribute="4.0" />
+      </condition>
+   </buy>
+   <buy name="Duchy">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Duchy"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="minus" attribute="3.0" />
+      </condition>
+   </buy>
+   <buy name="Province">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="minus" attribute="6.0" />
+      </condition>
+   </buy>
+   <buy name="Wandering_Minstrel">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Wandering_Minstrel"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+      </condition>
+   </buy>
+   <buy name="Livery">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Livery"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+      </condition>
+   </buy>
+   <buy name="Silk_Merchant">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Silk_Merchant"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+      </condition>
+   </buy>
+   <buy name="Fishing_Village">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Fishing_Village"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+      </condition>
+   </buy>
+   <buy name="Crop_Rotation">
+      <condition>
+         <left type="hasBuiltProject" attribute="Crop_Rotation"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsLeftInSmallestPile"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="4.0"/>
+      </condition>
+   </buy>
+   <buy name="Vineyard"/>
+   <buy name="Potion">
+      <condition>
+         <left type="isActionPhase"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Silk_Merchant"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="3.0"/>
+      </condition>
+   </buy>
+   <buy name="Potion">
+      <condition>
+         <left type="isActionPhase"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Silk_Merchant"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Sculptor">
+      <condition>
+         <left type="countCardsInDeck" attribute="Sculptor"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Bargain">
+      <condition>
+         <left type="countTurns"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+   </buy>
+   <buy name="Livery">
+      <condition>
+         <left type="countCardsInDeck" attribute="Livery"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="countCardsInDeck" attribute="Wandering_Minstrel"/>
+      </condition>
+   </buy>
+   <buy name="Province">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="smallerThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="plus" attribute="4.0" />
+      </condition>
+   </buy>
+   <buy name="Fairgrounds">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="smallerThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="plus" attribute="4.0" />
+      </condition>
+   </buy>
+   <buy name="Duke">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="smallerThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="plus" attribute="4.0" />
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Duchy"/>
+         <operator type="greaterThan" />
+         <right type="countCardsInDeck" attribute="Duke"/>
+         <extra_operation type="plus" attribute="3.0" />
+      </condition>
+   </buy>
+   <buy name="Duchy">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="smallerThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="plus" attribute="4.0" />
+      </condition>
+   </buy>
+   <buy name="Duke">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="smallerThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="plus" attribute="4.0" />
+      </condition>
+   </buy>
+   <buy name="Silk_Merchant">
+      <condition>
+         <left type="countCardsInDeck" attribute="Silk_Merchant"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="countCardsInDeck" attribute="Wandering_Minstrel"/>
+         <extra_operation type="plus" attribute="2.0" />
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Wandering_Minstrel">
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Fishing_Village"/>
+</player>

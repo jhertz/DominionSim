@@ -1,0 +1,81 @@
+<player name="Geronimoo"
+ author="Geronimoo"
+ description="">
+ <type name="SingleCard"/>
+ <type name="TwoPlayer"/>
+ <type name="Province"/>
+ <type name="Optimized"/>
+ <type name="UserCreated"/>
+  <board contents="Crop Rotation, Bargain, Duke, Vineyard, Sculptor, Livery, Fairgrounds, Wandering Minstrel, Fishing Village, Paddock, Gear, Silk Merchant" bane="" Mountain_Pass_Bid="0" Obelisk_Choice="" Shelters="false"/>
+   <buy name="Crop_Rotation">
+      <condition>
+         <left type="hasBuiltProject" attribute="Crop_Rotation"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Vineyard"/>
+   <buy name="Potion">
+      <condition>
+         <left type="isActionPhase"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Silk_Merchant"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="3.0"/>
+      </condition>
+   </buy>
+   <buy name="Sculptor">
+      <condition>
+         <left type="countCardsInDeck" attribute="Sculptor"/>
+         <operator type="smallerThan" />
+         <right type="constant" attribute="3.0"/>
+      </condition>
+   </buy>
+   <buy name="Bargain">
+      <condition>
+         <left type="countCardsInDeck" attribute="Sculptor"/>
+         <operator type="smallerThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Silver">
+      <condition>
+         <left type="isActionPhase"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="hasBuiltProject" attribute="Crop_Rotation"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Silver">
+      <condition>
+         <left type="countCardsInDeck" attribute="Silver"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Wandering_Minstrel">
+      <condition>
+         <left type="countCardTypeInDeck" attribute="Village"/>
+         <operator type="smallerThan" />
+         <right type="countCardTypeInDeck" attribute="Terminal"/>
+         <extra_operation type="minus" attribute="1.0" />
+      </condition>
+   </buy>
+   <buy name="Silk_Merchant"/>
+   <buy name="Fishing_Village">
+      <condition>
+         <left type="countCardTypeInDeck" attribute="Village"/>
+         <operator type="smallerThan" />
+         <right type="countCardTypeInDeck" attribute="Terminal"/>
+         <extra_operation type="minus" attribute="1.0" />
+      </condition>
+   </buy>
+   <buy name="Gear"/>
+</player>

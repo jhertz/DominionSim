@@ -1,0 +1,125 @@
+<player name="RTT"
+ author="RTT"
+ description="No description available">
+ <type name="TwoPlayer"/>
+ <type name="UserCreated"/>
+ <type name="Province"/>
+   <buy name="Vineyard"/>
+   <buy name="Province">
+      <condition>
+         <left type="countTurns"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="12.0"/>
+      </condition>
+   </buy>
+   <buy name="Fairgrounds">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+   </buy>
+   <buy name="Duchy">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+   </buy>
+   <buy name="Crop_Rotation">
+      <condition>
+         <left type="hasBuiltProject" attribute="Crop_Rotation"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Sculptor">
+      <condition>
+         <left type="countCardsInDeck" attribute="Sculptor"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Bargain">
+      <condition>
+         <left type="countCardsInDeck" attribute="Sculptor"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countTurns"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="3.0"/>
+      </condition>
+   </buy>
+   <buy name="Paddock">
+      <condition>
+         <left type="countEmptyPiles"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Paddock"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+   </buy>
+   <buy name="Silver">
+      <condition>
+         <left type="isActionPhase"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="actionsLeft"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Potion">
+      <condition>
+         <left type="isActionPhase"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Potion"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Wandering_Minstrel">
+      <condition>
+         <left type="countCardsInDeck" attribute="Silk_Merchant"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countCardsInDeck" attribute="Wandering_Minstrel"/>
+         <extra_operation type="plus" attribute="1.0" />
+      </condition>
+   </buy>
+   <buy name="Silk_Merchant"/>
+   <buy name="Wandering_Minstrel">
+      <condition>
+         <left type="countCardsInSupply" attribute="Silk_Merchant"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+         <extra_operation type="plus" attribute="1.0" />
+      </condition>
+   </buy>
+   <buy name="Fishing_Village"/>
+   <buy name="Gear"/>
+</player>
