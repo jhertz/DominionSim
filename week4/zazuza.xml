@@ -1,0 +1,442 @@
+<player name="zazuza"
+ author="zazuza"
+ description="">
+ <type name="Province"/>
+ <type name="TwoPlayer"/>
+ <type name="UserCreated"/>
+   <buy name="Colony">
+      <condition>
+         <left type="countCardsInSupply" attribute="Colony"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="plus" attribute="10.0" />
+      </condition>
+   </buy>
+   <buy name="Alliance">
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="minus" attribute="6.0" />
+      </condition>
+   </buy>
+   <buy name="Province">
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="minus" attribute="6.0" />
+      </condition>
+   </buy>
+   <buy name="Duchy">
+      <condition>
+         <left type="gainsNeededToEndGame"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Duchy"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+         <extra_operation type="minus" attribute="6.0" />
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="plus" attribute="3.0" />
+      </condition>
+   </buy>
+   <buy name="Estate">
+      <condition>
+         <left type="countEmptyPiles"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Estate"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+         <extra_operation type="minus" attribute="6.0" />
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="plus" attribute="1.0" />
+      </condition>
+   </buy>
+   <buy name="Cultist">
+      <condition>
+         <left type="countEmptyPiles"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Cultist"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+         <extra_operation type="minus" attribute="6.0" />
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterThan" />
+         <right type="countMAXOpponentVP"/>
+      </condition>
+   </buy>
+   <buy name="Wharf">
+      <condition>
+         <left type="countEmptyPiles"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Wharf"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+         <extra_operation type="minus" attribute="6.0" />
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterThan" />
+         <right type="countMAXOpponentVP"/>
+      </condition>
+   </buy>
+   <buy name="Treasury">
+      <condition>
+         <left type="countEmptyPiles"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Treasury"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+         <extra_operation type="minus" attribute="6.0" />
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterThan" />
+         <right type="countMAXOpponentVP"/>
+      </condition>
+   </buy>
+   <buy name="Bank">
+      <condition>
+         <left type="countEmptyPiles"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Bank"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+         <extra_operation type="minus" attribute="6.0" />
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterThan" />
+         <right type="countMAXOpponentVP"/>
+      </condition>
+   </buy>
+   <buy name="Province">
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="countVP"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="minus" attribute="6.0" />
+      </condition>
+   </buy>
+   <buy name="Wharf">
+      <condition>
+         <left type="countTurns"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+   </buy>
+   <buy name="Guildhall">
+      <condition>
+         <left type="hasBuiltProject" attribute="Guildhall"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Treasury">
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countTurns"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="4.0"/>
+      </condition>
+   </buy>
+   <buy name="Colony">
+      <condition>
+         <left type="countVP"/>
+         <operator type="smallerThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="minus" attribute="10.0" />
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Den_of_Sin">
+      <condition>
+         <left type="countVP"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="minus" attribute="7.0" />
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Duchy"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Estate"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Den_of_Sin">
+      <condition>
+         <left type="countVP"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="minus" attribute="8.0" />
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Duchy"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Den_of_Sin">
+      <condition>
+         <left type="countVP"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="countMAXOpponentVP"/>
+         <extra_operation type="minus" attribute="10.0" />
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Estate"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Alliance">
+      <condition>
+         <left type="countTurns"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="7.0"/>
+      </condition>
+   </buy>
+   <buy name="Platinum">
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="8.0"/>
+      </condition>
+   </buy>
+   <buy name="Alliance">
+      <condition>
+         <left type="countTurns"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="6.0"/>
+      </condition>
+   </buy>
+   <buy name="Den_of_Sin">
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Duchy">
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Den_of_Sin">
+      <condition>
+         <left type="countTurns"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="10.0"/>
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Ghost_Town">
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Estate">
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="2.0"/>
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Estate">
+      <condition>
+         <left type="countCardsInSupply" attribute="Province"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Estate">
+      <condition>
+         <left type="isActionPhase"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Platinum">
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="8.0"/>
+      </condition>
+   </buy>
+   <buy name="Bank">
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInOpponentsDecks" attribute="Cultist"/>
+         <operator type="smallerThan" />
+         <right type="constant" attribute="3.0"/>
+      </condition>
+   </buy>
+   <buy name="Gold">
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Treasury">
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countTurns"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="6.0"/>
+      </condition>
+   </buy>
+   <buy name="Baron">
+      <condition>
+         <left type="countCardsInDeck" attribute="Baron"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+      <condition>
+         <left type="countTurns"/>
+         <operator type="smallerOrEqualThan" />
+         <right type="constant" attribute="4.0"/>
+      </condition>
+   </buy>
+   <buy name="Silver">
+      <condition>
+         <left type="doesNotSpendCoffers"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Copper">
+      <condition>
+         <left type="hasBuiltProject" attribute="Guildhall"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+</player>
+

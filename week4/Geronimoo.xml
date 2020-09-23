@@ -1,0 +1,86 @@
+<player name="Geronimoo"
+ author="Geronimoo"
+ description="">
+ <type name="TwoPlayer"/>
+ <type name="Optimized"/>
+ <type name="UserCreated"/>
+ <type name="Engine"/>
+ <type name="Province"/>
+  <board contents="Colony, Bank, Wharf, Treasury, Lost City, Den of Sin, Cultist, Patron, Baron, Ghost Town, City Quarter, Guildhall, Alliance" bane="" Mountain_Pass_Bid="0" Obelisk_Choice="" Shelters="false"/>
+   <buy name="Alliance">
+      <condition>
+         <left type="countCardsInDeck" attribute="Bank"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Colony">
+      <condition>
+         <left type="countCardsInDeck" attribute="Bank"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Duchy">
+      <condition>
+         <left type="countCardsInDeck" attribute="Province"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Estate">
+      <condition>
+         <left type="countCardsInDeck" attribute="Province"/>
+         <operator type="greaterOrEqualThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Bank">
+      <condition>
+         <left type="countCardsInDeck" attribute="Bank"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="City_Quarter">
+      <condition>
+         <left type="countCardTypeInDeck" attribute="Action"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="8.0"/>
+      </condition>
+   </buy>
+   <buy name="Guildhall">
+      <condition>
+         <left type="countCardTypeInDeck" attribute="Action"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="8.0"/>
+      </condition>
+      <condition>
+         <left type="hasBuiltProject" attribute="Guildhall"/>
+         <operator type="equalTo" />
+         <right type="constant" attribute="0.0"/>
+      </condition>
+   </buy>
+   <buy name="Bank">
+      <condition>
+         <left type="countCardTypeInDeck" attribute="Action"/>
+         <operator type="greaterThan" />
+         <right type="constant" attribute="8.0"/>
+      </condition>
+      <condition>
+         <left type="countCardsInDeck" attribute="Bank"/>
+         <operator type="smallerThan" />
+         <right type="constant" attribute="3.0"/>
+      </condition>
+   </buy>
+   <buy name="Wharf"/>
+   <buy name="Baron">
+      <condition>
+         <left type="countCardsInDeck" attribute="Baron"/>
+         <operator type="smallerThan" />
+         <right type="constant" attribute="1.0"/>
+      </condition>
+   </buy>
+   <buy name="Patron"/>
+   <buy name="Ghost_Town"/>
+</player>
